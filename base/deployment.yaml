@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarkus-example
+  labels:
+    app: quarkus-example
+    openshift-example: "yes"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-example
+  template:
+    metadata:
+      labels:
+        app: quarkus-example
+        openshift-example: "yes"
+    spec:
+      containers:
+      - name: quarkus-example
+        image: nginxinc/nginx-unprivileged:1.18
+        ports:
+        - containerPort: 8080

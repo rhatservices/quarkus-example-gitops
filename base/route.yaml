@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+  name: quarkus-example
+  labels:
+    openshift-example: "yes"
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: quarkus-example
+    weight: 100
+  wildcardPolicy: None
